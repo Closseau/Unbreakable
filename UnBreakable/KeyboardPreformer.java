@@ -10,6 +10,7 @@
 import java.awt.event.*;
 public class KeyboardPreformer implements KeyListener
 {
+	private int i;
 	public KeyboardPreformer()
 	{
 		
@@ -18,13 +19,21 @@ public class KeyboardPreformer implements KeyListener
 	{
         if (e.getKeyChar() == KeyEvent.VK_A)
 		{
-			ImageCollector.StartBar.changeDir(-1);
-			//System.out.println("downA");
+			for (i = 0; i <= ImageCollector.Bars.size() - 1; i++)
+			{
+				ImageCollector.Bars.get(i).changeDir(-1);
+			}
+
+			System.out.println("downA");
 		}
 		if (e.getKeyChar() == KeyEvent.VK_D)
 		{
-			ImageCollector.StartBar.changeDir(1);
-			//System.out.println("downD");
+			for (i = 0; i <= ImageCollector.Bars.size() - 1; i++)
+			{
+				ImageCollector.Bars.get(i).changeDir(1);
+			}
+
+			System.out.println("downD");
 		}
     }
 
@@ -39,13 +48,21 @@ public class KeyboardPreformer implements KeyListener
 	{
         if (e.getKeyChar() == KeyEvent.VK_A)
 		{
-			ImageCollector.StartBar.changeDir(0);
-			//System.out.println("upA");
+			for (i = 0; i <= ImageCollector.Bars.size() - 1; i++)
+			{
+				ImageCollector.Bars.get(i).changeDir(0);
+			}
+
+			System.out.println("upA");
 		}
 		if (e.getKeyChar() == KeyEvent.VK_D)
 		{
-			ImageCollector.StartBar.changeDir(0);
-			//System.out.println("upD");
+			for (i = 0; i <= ImageCollector.Bars.size() - 1; i++)
+			{
+				ImageCollector.Bars.get(i).changeDir(0);
+			}
+
+			System.out.println("upD");
 		}
     }
 }

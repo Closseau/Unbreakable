@@ -29,8 +29,8 @@ public class ImageCollector extends Component
 	BufferedImage Bar;
 	BufferedImage[] Brick = new BufferedImage[5];
 	private ArrayList<Block> Bricks = new ArrayList<Block>();
-	private AnimeBall StartBall = new AnimeBall(700, 650, 2, -3, 4, 1);
-	public static Bar StartBar = new Bar(660, 840, 5, 0);
+	private ArrayList<AnimeBall> Balls = new ArrayList<AnimeBall>();
+	public static ArrayList<Bar> Bars = new ArrayList<Bar>();
 
 	public ImageCollector() 
 	{        
@@ -51,7 +51,7 @@ public class ImageCollector extends Component
 			Brick[4] = ImageIO.read(new File("BlockV4.png")); 
 			
 			Ball[0][0] = ImageIO.read(new File("BallV3.png"));
-			Ball[0][1] = null;
+			Ball[0][1] = ImageIO.read(new File("BallV3-2.png"));
 			Ball[0][2] = null;
 			Ball[0][3] = null;
 			Ball[0][4] = null;
@@ -66,7 +66,16 @@ public class ImageCollector extends Component
 					}
 				}
 			}
-			
+			for (y = 0; y < 25; y++)
+			{
+				for (x = 0; x < 25; x++)
+				{
+					if (Ball[0][1].getRGB(x, y) >= -500000)
+					{
+						Ball[0][1].setRGB(x, y, 0x00000000);
+					}
+				}
+			}
 			
 			Ball[1][0] = ImageIO.read(new File("BallV4D1.png")); 
 			Ball[1][1] = ImageIO.read(new File("BallV4D1S1.png")); 
@@ -136,6 +145,24 @@ public class ImageCollector extends Component
 				Bricks.add(new Block(j, i, 3));
 			}
 		}
+		/*
+			StartBall = new AnimeBall(700, 650, 2, -3, 4, 1);
+			StartBar = new Bar(660, 840, 5, 0);
+		*/
+		i = 0;
+		j = 0;
+		for (i = 0; i <= 0; i++)
+		{
+			Balls.add(new AnimeBall(700, 650, 2, -3, 4, 0));
+		}
+			Balls.add(new AnimeBall(500, 650, 2, -3, 4, 1));
+		i = 0;
+		j = 0;
+	//	for (i = 0; i <= 0; i = i++)
+	//	{
+			Bars.add(new Bar(330, 840, 5, 0));
+			Bars.add(new Bar(990, 840, 5, 0));
+	//	}
 	//	Bricks.add(new Block(675, 50, 3));
 		/*
 		Bricks.add(new Block(100, 50, 4));
@@ -324,10 +351,14 @@ public class ImageCollector extends Component
 			g.drawImage(Background, 0, 0, null);
 		
 			//g.drawImage(Ball[StartBall.getdirection()][StartBall.getState()], (int)StartBall.getLocationX(), (int)StartBall.getLocationY(), null);
-		g.drawImage(Ball[0][0], (int)StartBall.getLocationX(), (int)StartBall.getLocationY(), null);
+		for (i = 0; i <= Balls.size() - 1; i++)
+			g.drawImage(Ball[0][Balls.get(i).getState()], (int)Balls.get(i).getLocationX(), (int)Balls.get(i).getLocationY(), null);
 	//	for (i = 0; i < MovableBarXLocations.length; i++)
-		
-			g.drawImage(Bar, (int)StartBar.getLocationX(), (int)StartBar.getLocationY(), null);
+			System.out.println(Balls.get(0).getState());
+	
+	
+		for (i = 0; i <= Bars.size() - 1; i++)
+			g.drawImage(Bar, (int)Bars.get(i).getLocationX(), (int)Bars.get(i).getLocationY(), null);
 		
 	//	for (i = 0; i < MovableBarXLocations.length; i++)
 		
@@ -340,37 +371,48 @@ public class ImageCollector extends Component
 	{         
 		boolean done = false;
 		int i;
-		
-	//	for (i = 0; i < MovableBallXLocations.length; i++)
-				
-			if (StartBall.check(StartBar))
+		int j;
+		for (j = 0; j <= Bars.size() - 1; j++)
 			{
-				StartBall.act();
+				Bars.get(j).act();
+				
 			}
-			StartBall.act();
+		for (i = 0; i <= Balls.size() - 1; i++)
+		{		
+		// revision maybe
+		/*
+			if (Balls.get(i).check(StartBar))
+			{
+				Balls.get(i).act();
+			}
+			*/
+			Balls.get(i).act();
 			
 			
 			// a method to see if the ball hit something
-			for (i = 0; i <= Bricks.size() - 1; i++)
+			for (j = 0; j <= Bricks.size() - 1; j++)
 			{
-				if (StartBall.check(Bricks.get(i)))
+				if (Balls.get(i).check(Bricks.get(j)))
 				{
 					break;
 				//	StartBall.act();
 				//	StartBall.act();
 				}
 			}	
-			if (StartBall.check(StartBar))
+			for (j = 0; j <= Bars.size() - 1; j++)
 			{
-				StartBall.act();
+				if (Balls.get(i).check(Bars.get(j)))
+				{
+					//Balls.get(i).act();
+				}
 			}
-			StartBall.borderBounce(true, true, 0);
-			StartBall.borderBounce(true, false, 1375);
-			StartBall.borderBounce(false, true, 0);
-			StartBall.borderBounce(false, false, 875);
-			StartBar.act();
-			Main.f.repaint();
-		
+			Balls.get(i).borderBounce(true, true, 0);
+			Balls.get(i).borderBounce(true, false, 1375);
+			Balls.get(i).borderBounce(false, true, 0);
+			Balls.get(i).borderBounce(false, false, 875);
+			//Balls.get(i).act();
+		}
+		Main.f.repaint();
 	//	for (i = 0; i < MovableBarXLocations.length; i++)
 		
 			// jazz about key board events and such

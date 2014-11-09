@@ -7,13 +7,14 @@ public class AnimeBall extends Ball
 	protected AnimeBall(double x, double y, double startingVelocityX, double startingVelocityY, int mySpeed, int myState)
 	{
 		super(x,y,startingVelocityX,startingVelocityY,mySpeed);
-		Anime();
+		state = myState;
+		//Anime();
 	}
 	
 	public void act()
 	{
 		move();
-		Anime();
+		//Anime();
 	}
 	
 	public void Anime()
