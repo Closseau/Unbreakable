@@ -354,7 +354,7 @@ public class ImageCollector extends Component
 		for (i = 0; i <= Balls.size() - 1; i++)
 			g.drawImage(Ball[0][Balls.get(i).getState()], (int)Balls.get(i).getLocationX(), (int)Balls.get(i).getLocationY(), null);
 	//	for (i = 0; i < MovableBarXLocations.length; i++)
-			System.out.println(Balls.get(0).getState());
+			//	System.out.println(Balls.get(0).getState());
 	
 	
 		for (i = 0; i <= Bars.size() - 1; i++)
@@ -387,8 +387,22 @@ public class ImageCollector extends Component
 			}
 			*/
 			Balls.get(i).act();
+			// method for ball hiting other balls in array *crosses fingers*
 			
-			
+			for (j = 0; j <= Balls.size() - 1; j++)
+			{
+				// don't check for collisions with same object
+				if (i != j)
+				{
+					if (Balls.get(i).check(Balls.get(j)))
+					{
+						
+						break;
+					//	StartBall.act();
+					//	StartBall.act();
+					}
+				}
+			}	
 			// a method to see if the ball hit something
 			for (j = 0; j <= Bricks.size() - 1; j++)
 			{
