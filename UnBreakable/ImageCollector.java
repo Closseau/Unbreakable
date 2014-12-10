@@ -138,24 +138,26 @@ public class ImageCollector extends Component
 		
 		i = 50;
 		j = 0;
-		for (i = 50; i <= 450; i = i + 60)
-		{
+		//for (i = 50; i <= 450; i = i + 60)
+	//	{
 			for (j = 25; j <= 1300; j = j + 85)
 			{
 				Bricks.add(new Block(j, i, 3));
 			}
-		}
+	//	}
 		/*
 			StartBall = new AnimeBall(700, 650, 2, -3, 4, 1);
 			StartBar = new Bar(660, 840, 5, 0);
 		*/
 		i = 0;
 		j = 0;
-		for (i = 0; i <= 0; i++)
+		for (j = 0; j <= 5; j++)
 		{
-			Balls.add(new AnimeBall(700, 650, 2, -3, 4, 0));
+			for (i = 0; i <= 6; i++)
+			{
+				Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
+			}
 		}
-			Balls.add(new AnimeBall(500, 650, 2, -3, 4, 1));
 		i = 0;
 		j = 0;
 	//	for (i = 0; i <= 0; i = i++)
@@ -373,14 +375,13 @@ public class ImageCollector extends Component
 		int i;
 		int j;
 		for (j = 0; j <= Bars.size() - 1; j++)
-			{
-				Bars.get(j).act();
-				
-			}
+		{
+			Bars.get(j).act();
+		}
 		for (i = 0; i <= Balls.size() - 1; i++)
 		{		
-		// revision maybe
-		/*
+			// revision maybe
+			/*
 			if (Balls.get(i).check(StartBar))
 			{
 				Balls.get(i).act();
@@ -397,7 +398,7 @@ public class ImageCollector extends Component
 					if (Balls.get(i).check(Balls.get(j)))
 					{
 						
-						break;
+						
 					//	StartBall.act();
 					//	StartBall.act();
 					}
@@ -420,10 +421,10 @@ public class ImageCollector extends Component
 					//Balls.get(i).act();
 				}
 			}
-			Balls.get(i).borderBounce(true, true, 0);
-			Balls.get(i).borderBounce(true, false, 1375);
-			Balls.get(i).borderBounce(false, true, 0);
-			Balls.get(i).borderBounce(false, false, 875);
+			Balls.get(i).borderBounce(true, false, 0);
+			Balls.get(i).borderBounce(true, true, 1375);
+			Balls.get(i).borderBounce(false, false, 0);
+			Balls.get(i).borderBounce(false, true, 875);
 			//Balls.get(i).act();
 		}
 		Main.f.repaint();

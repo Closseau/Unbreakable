@@ -441,6 +441,8 @@ public class Ball extends GameObject
 	{
 		double xDiffrence;
 		double yDiffrence;
+		double xTempDiffrence = VelocityY;
+		double yTempDiffrence = VelocityX;
 		boolean done = false;
 		if (((locationX >= OtherObject.getLocationX()) && (locationX <= OtherObject.getLocationX() + 25)) || ((locationX + 25 >= OtherObject.getLocationX()) && (locationX + 25 <= OtherObject.getLocationX() + 25)))
 		{
@@ -454,6 +456,15 @@ public class Ball extends GameObject
 					if (((OtherObject.getLocationY() >= locationY) && (OtherObject.getLocationY() <= locationY + 25)) || ((OtherObject.getLocationY() + 25 >= locationY) && (OtherObject.getLocationY() <= locationY + 25)))
 					{
 						done = true;
+						/*
+						VelocityX = OtherObject.getVelocityX();
+						OtherObject.setVelocityX(xTempDiffrence);
+						VelocityY = OtherObject.getVelocityY();
+						OtherObject.setVelocityY(yTempDiffrence);
+						*/
+						
+						
+						
 						
 						if (VelocityY > 0)
 						{
@@ -461,11 +472,11 @@ public class Ball extends GameObject
 							if (VelocityX > 0)
 							{
 								// LEFT
-								System.out.println("TOP LEFT");
+								//System.out.println("TOP LEFT");
 								xDiffrence = Math.abs(locationX + 25 - OtherObject.getLocationX());
 								yDiffrence = Math.abs(locationY + 25  - (OtherObject.getLocationY()));
-								System.out.println(xDiffrence);
-								System.out.println(yDiffrence);
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
 								if (xDiffrence < yDiffrence)
 								{
 									VelocityX = VelocityX * -1;
@@ -483,9 +494,9 @@ public class Ball extends GameObject
 							else if (VelocityX < 0)
 							{
 								// right
-								System.out.println("TOP RIGHT");
-								System.out.println(locationX - (OtherObject.getLocationX() + 25));
-								System.out.println(locationY + 25  - (OtherObject.getLocationY()));
+							//	System.out.println("TOP RIGHT");
+							//	System.out.println(locationX - (OtherObject.getLocationX() + 25));
+							//	System.out.println(locationY + 25  - (OtherObject.getLocationY()));
 								xDiffrence = Math.abs(locationX - (OtherObject.getLocationX() + 25));
 								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY()));
 								if (xDiffrence < yDiffrence)
@@ -517,11 +528,11 @@ public class Ball extends GameObject
 							{
 								OtherObject.setLocationX(OtherObject.getLocationX() + 5);
 								// left
-								System.out.println("BOT LEFT");
+							//	System.out.println("BOT LEFT");
 								xDiffrence = Math.abs(locationX + 25 - (OtherObject.getLocationX()));
 								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY() + 25));
-								System.out.println(xDiffrence);
-								System.out.println(yDiffrence);
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
 								if (xDiffrence <  yDiffrence)
 								{
 									VelocityX = VelocityX * -1;
@@ -541,12 +552,12 @@ public class Ball extends GameObject
 							{
 								OtherObject.setLocationX(OtherObject.getLocationX() - 5);
 								// right	
-								System.out.println("BOT RIGHT");
+							//	System.out.println("BOT RIGHT");
 								
 								xDiffrence = Math.abs(locationX - (OtherObject.getLocationX() + 25));
 								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY() + 25));
-								System.out.println(xDiffrence);
-								System.out.println(yDiffrence);
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
 								if (xDiffrence < yDiffrence)
 								{
 									VelocityX = VelocityX * -1;
@@ -574,111 +585,6 @@ public class Ball extends GameObject
 						}
 						
 						
-						
-						//OtherObject.setHealth(OtherObject.getHealth() - 1);
-						//move();
-						
-						/*
-					//	System.out.println("pos4");
-						if (Math.abs(OtherObject.getLocationY() - locationY) > Math.abs(OtherObject.getLocationY() + 50 - locationY))
-						{
-							if (Math.abs(OtherObject.getLocationY() + 50 - locationY) > Math.abs(OtherObject.getLocationY() + 50 - locationY + 25))
-							{
-								yDiffrence = Math.abs(OtherObject.getLocationY() + 50 - locationY + 25);
-							}
-							else
-							{
-								yDiffrence = Math.abs(OtherObject.getLocationY() + 50 - locationY);
-							}
-						}
-						else
-						{
-							if (Math.abs(OtherObject.getLocationY() - locationY) > Math.abs(OtherObject.getLocationY() - locationY + 25))
-							{
-								yDiffrence = Math.abs(OtherObject.getLocationY() - locationY + 25);
-							}
-							else
-							{
-								yDiffrence = Math.abs(OtherObject.getLocationY() - locationY);
-							}
-						}
-						// here
-						
-						
-						if (Math.abs(OtherObject.getLocationX() - locationX) > Math.abs(OtherObject.getLocationX() + 75 - locationX))
-						{
-							if (Math.abs(OtherObject.getLocationX() + 75 - locationX) > Math.abs(OtherObject.getLocationX() + 75 - locationX + 25))
-							{
-								xDiffrence = Math.abs(OtherObject.getLocationX() +75 - locationX + 25);
-							}
-							else
-							{
-								xDiffrence = Math.abs(OtherObject.getLocationX() + 75 - locationX);
-							}
-							
-						}
-						else
-						{
-							if (Math.abs(OtherObject.getLocationX() - locationX) > Math.abs(OtherObject.getLocationX() - locationX + 25))
-							{
-								xDiffrence = Math.abs(OtherObject.getLocationX() - locationX + 25);
-							}
-							else
-							{
-								xDiffrence = Math.abs(OtherObject.getLocationX() - locationX);
-							}
-						}
-						
-						
-						
-						
-						// thhwsheuefiksaefnks
-						if (xDiffrence < yDiffrence)
-						{
-							
-							VelocityX = VelocityX * -1;
-							System.out.println("x");
-							OtherObject.setHealth(OtherObject.getHealth() - 1);
-							while (j < 1)
-							{
-								move();
-							}
-							j = 1;
-						}
-						else if (xDiffrence > yDiffrence)
-						{
-							
-							VelocityY = VelocityY * -1;
-							System.out.println("y");
-							OtherObject.setHealth(OtherObject.getHealth() - 1);
-							while (j < 1)
-							{
-								move();
-							}
-							j = 1;
-						}
-						else
-						{
-							VelocityY = VelocityY * -1;
-							OtherObject.setHealth(OtherObject.getHealth() - 1);
-						
-							VelocityY = VelocityY * -1;
-							System.out.println("xy");
-							
-							System.out.println(xDiffrence);
-							System.out.println(yDiffrence);
-							//j++;
-							while (j < 1)
-							{
-								move();
-							}
-							j = 1;
-						}
-						
-						*/
-						//System.out.println(Math.abs(OtherObject.getLocationY() - locationY));
-						//System.out.println("pos4");
-						
 						//OtherObject.setHealth(OtherObject.getHealth() - 1);
 						/*
 						if (OtherObject.getHealth() <= 0)
@@ -702,14 +608,16 @@ public class Ball extends GameObject
 			{
 				if (locationX >= pos)
 				{
-					VelocityX = VelocityX * -1;
+					//System.out.println("duhfuq");
+					VelocityX = Math.abs(VelocityX) * -1;
 				}
 			}
 			else
 			{
 				if (locationX <= pos)
 				{
-					VelocityX = VelocityX * -1;
+					//System.out.println("duhfuq2");
+					VelocityX = Math.abs(VelocityX);
 				}
 			}
 			
@@ -720,14 +628,16 @@ public class Ball extends GameObject
 			{
 				if (locationY >= pos)
 				{
-					VelocityY = VelocityY * -1;
+					//System.out.println("duhfuq3");
+					VelocityY = Math.abs(VelocityY) * -1;
 				}
 			}
 			else
 			{
 				if (locationY <= pos)
 				{
-					VelocityY = VelocityY * -1;
+					//System.out.println("duhfuq4");
+					VelocityY = Math.abs(VelocityY);
 				}
 			}
 		}
