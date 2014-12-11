@@ -155,7 +155,8 @@ public class ImageCollector extends Component
 		{
 			for (i = 0; i <= 6; i++)
 			{
-				Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
+				//Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
+				Balls.add(new AnimeBall(i * 200, j * 100, 4, j % 2));
 			}
 		}
 		i = 0;
@@ -398,7 +399,7 @@ public class ImageCollector extends Component
 					if (Balls.get(i).check(Balls.get(j)))
 					{
 						
-						
+						break;
 					//	StartBall.act();
 					//	StartBall.act();
 					}

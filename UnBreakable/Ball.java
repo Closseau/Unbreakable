@@ -13,7 +13,19 @@ public class Ball extends GameObject
 		VelocityY = startingVelocityY;
 		speed = mySpeed;
 	}
+	protected Ball(double x, double y, int mySpeed)
+	{
+		super(x,y);
+		VelocityX = ranSpeed();
+		VelocityY = ranSpeed();
+		speed = mySpeed;
+	}
 	
+	public double ranSpeed()
+	{
+		double myRandom;
+		return myRandom = Math.random() * 5;
+	}
 	public void act()
 	{
 		move();
@@ -437,12 +449,23 @@ public class Ball extends GameObject
 		
 		return done;
 	}
+	private boolean isPositive(double testNumber)
+	{
+		if (testNumber > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	protected boolean check(Ball OtherObject)
 	{
 		double xDiffrence;
 		double yDiffrence;
-		double xTempDiffrence = VelocityY;
-		double yTempDiffrence = VelocityX;
+		double xTempDiffrence = (Math.abs(OtherObject.getVelocityX()) + Math.abs(VelocityX)) / 2;
+		double yTempDiffrence = (Math.abs(OtherObject.getVelocityY()) + Math.abs(VelocityY)) / 2;
 		boolean done = false;
 		if (((locationX >= OtherObject.getLocationX()) && (locationX <= OtherObject.getLocationX() + 25)) || ((locationX + 25 >= OtherObject.getLocationX()) && (locationX + 25 <= OtherObject.getLocationX() + 25)))
 		{
@@ -466,6 +489,368 @@ public class Ball extends GameObject
 						
 						
 						
+						if (VelocityY > 0)
+						{
+							// top
+							if (VelocityX > 0)
+							{
+								// LEFT
+								//System.out.println("TOP LEFT");
+								xDiffrence = Math.abs(locationX + 25 - OtherObject.getLocationX());
+								yDiffrence = Math.abs(locationY + 25  - (OtherObject.getLocationY()));
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
+								if (xDiffrence < yDiffrence)
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+								}
+								else if (xDiffrence > yDiffrence)
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+								else
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+							}
+							else if (VelocityX < 0)
+							{
+								// right
+							//	System.out.println("TOP RIGHT");
+							//	System.out.println(locationX - (OtherObject.getLocationX() + 25));
+							//	System.out.println(locationY + 25  - (OtherObject.getLocationY()));
+								xDiffrence = Math.abs(locationX - (OtherObject.getLocationX() + 25));
+								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY()));
+								if (xDiffrence < yDiffrence)
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+								}
+								else if (xDiffrence > yDiffrence)
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+								else
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+								
+							}
+							else
+							{
+								// vertical
+								
+							}
+						}
+						else if (VelocityY < 0)
+						{
+							// bot
+							OtherObject.setLocationY(OtherObject.getLocationY() - 5);
+							if (VelocityX > 0)
+							{
+								OtherObject.setLocationX(OtherObject.getLocationX() + 5);
+								// left
+							//	System.out.println("BOT LEFT");
+								xDiffrence = Math.abs(locationX + 25 - (OtherObject.getLocationX()));
+								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY() + 25));
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
+								if (xDiffrence <  yDiffrence)
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+								}
+								else if (xDiffrence > yDiffrence)
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+								else
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+								}
+								
+							}
+							else if (VelocityX < 0)
+							{
+								OtherObject.setLocationX(OtherObject.getLocationX() - 5);
+								// right	
+							//	System.out.println("BOT RIGHT");
+								
+								xDiffrence = Math.abs(locationX - (OtherObject.getLocationX() + 25));
+								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY() + 25));
+							//	System.out.println(xDiffrence);
+							//	System.out.println(yDiffrence);
+								if (xDiffrence < yDiffrence)
+								{
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+									
+								}
+								else if (xDiffrence > yDiffrence)
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+								}
+								else
+								{
+									if (isPositive(VelocityY))
+									{
+										VelocityY = yTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityY = yTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityY()))
+									{
+										OtherObject.setVelocityY(yTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityY(yTempDiffrence);
+									}
+									if (isPositive(VelocityX))
+									{
+										VelocityX = xTempDiffrence * -1;
+									}
+									else
+									{
+										VelocityX = xTempDiffrence;
+									}
+									if (isPositive(OtherObject.getVelocityX()))
+									{
+										OtherObject.setVelocityX(xTempDiffrence * -1);
+									}
+									else
+									{
+										OtherObject.setVelocityX(xTempDiffrence);
+									}
+								}
+								
+							}
+							else
+							{
+								// vertical
+								VelocityY = VelocityY * -1;
+							}
+						}	
+						else
+						{
+							//error in the code ;(
+						}
+						
+						
+						//OtherObject.setHealth(OtherObject.getHealth() - 1);
+						/*
 						if (VelocityY > 0)
 						{
 							// top
@@ -582,15 +967,6 @@ public class Ball extends GameObject
 						else
 						{
 							//error in the code ;(
-						}
-						
-						
-						//OtherObject.setHealth(OtherObject.getHealth() - 1);
-						/*
-						if (OtherObject.getHealth() <= 0)
-						{
-							OtherObject.setLocationX(-200);
-							OtherObject.setLocationY(-200);
 						}
 						*/
 					}

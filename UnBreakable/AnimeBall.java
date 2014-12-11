@@ -10,6 +10,12 @@ public class AnimeBall extends Ball
 		state = myState;
 		//Anime();
 	}
+	protected AnimeBall(double x, double y, int mySpeed, int myState)
+	{
+		super(x,y,mySpeed);
+		state = myState;
+		//Anime();
+	}
 	
 	public void act()
 	{
