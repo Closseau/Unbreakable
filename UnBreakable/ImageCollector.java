@@ -155,17 +155,19 @@ public class ImageCollector extends Component
 		{
 			for (i = 0; i <= 6; i++)
 			{
-				//Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
-				Balls.add(new AnimeBall(i * 200, j * 100, 4, j % 2));
+				Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
+				//Balls.add(new AnimeBall(i * 200, j * 100, 4, j % 2));
 			}
 		}
+		//Balls.add(new AnimeBall(200, 100, 2, -3, 4, j % 2));
 		i = 0;
 		j = 0;
-	//	for (i = 0; i <= 0; i = i++)
-	//	{
-			Bars.add(new Bar(330, 840, 5, 0));
-			Bars.add(new Bar(990, 840, 5, 0));
-	//	}
+		for (i = 0; i <= 13; i++)
+		{
+			Bars.add(new Bar(i * 100, 840, 5, 0));
+		}
+	//Bars.add(new Bar(330, 840, 5, 0));
+	//Bars.add(new Bar(990, 840, 5, 0));
 	//	Bricks.add(new Block(675, 50, 3));
 		/*
 		Bricks.add(new Block(100, 50, 4));
@@ -375,12 +377,16 @@ public class ImageCollector extends Component
 		boolean done = false;
 		int i;
 		int j;
+		boolean xDone;
+		boolean yDone;
 		for (j = 0; j <= Bars.size() - 1; j++)
 		{
 			Bars.get(j).act();
 		}
 		for (i = 0; i <= Balls.size() - 1; i++)
 		{		
+			xDone = false;
+			yDone = false;
 			// revision maybe
 			/*
 			if (Balls.get(i).check(StartBar))
@@ -399,7 +405,7 @@ public class ImageCollector extends Component
 					if (Balls.get(i).check(Balls.get(j)))
 					{
 						
-						break;
+						//break;
 					//	StartBall.act();
 					//	StartBall.act();
 					}
@@ -410,23 +416,32 @@ public class ImageCollector extends Component
 			{
 				if (Balls.get(i).check(Bricks.get(j)))
 				{
-					break;
+					//break;
 				//	StartBall.act();
 				//	StartBall.act();
 				}
 			}	
 			for (j = 0; j <= Bars.size() - 1; j++)
 			{
+				//System.out.println("HIT bar number: " + j);
 				if (Balls.get(i).check(Bars.get(j)))
 				{
+					//System.out.println("HIT bar number: " + j);
 					//Balls.get(i).act();
 				}
 			}
 			Balls.get(i).borderBounce(true, false, 0);
 			Balls.get(i).borderBounce(true, true, 1375);
 			Balls.get(i).borderBounce(false, false, 0);
-			Balls.get(i).borderBounce(false, true, 875);
+			if (Balls.get(i).borderBounce(false, true, 875) != true)
+			{
+				Balls.remove(i);
+				i = i - 1;
+			}
 			//Balls.get(i).act();
+			Balls.get(i).setDoneX(false);
+			Balls.get(i).setDoneY(false);
+			
 		}
 		Main.f.repaint();
 	//	for (i = 0; i < MovableBarXLocations.length; i++)

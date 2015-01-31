@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
   
 public class Main  
 {
-	public static JFrame f;
+    public static JFrame f;
 	public static KeyboardPreformer Keyboard = new KeyboardPreformer();
     public static void main(String args[])  
     {

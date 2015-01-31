@@ -5,7 +5,10 @@ public class Ball extends GameObject
 	private int j = 1;
 	protected double VelocityX;
 	protected double VelocityY;
+	protected boolean doneX;
+	protected boolean doneY;
 	protected int speed;
+	
 	protected Ball(double x, double y, double startingVelocityX, double startingVelocityY, int mySpeed)
 	{
 		super(x,y);
@@ -75,16 +78,32 @@ public class Ball extends GameObject
 								System.out.println(yDiffrence);
 								if (xDiffrence < yDiffrence)
 								{
-									VelocityX = VelocityX * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
-									VelocityY = VelocityY * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 								else
 								{
-									VelocityX = VelocityX * -1;
-									VelocityY = VelocityY * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 							}
 							else if (VelocityX < 0)
@@ -97,16 +116,32 @@ public class Ball extends GameObject
 								yDiffrence = Math.abs(locationY  - (OtherObject.getLocationY()));
 								if (xDiffrence < yDiffrence)
 								{
-									VelocityX = VelocityX * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
-									VelocityY = VelocityY * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 								else
 								{
-									VelocityX = VelocityX * -1;
-									VelocityY = VelocityY * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 								
 							}
@@ -131,16 +166,32 @@ public class Ball extends GameObject
 								System.out.println(yDiffrence);
 								if (xDiffrence <  yDiffrence)
 								{
-									VelocityX = VelocityX * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
-									VelocityY = VelocityY * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 								else
 								{
-									VelocityY = VelocityY * -1;
-									VelocityX = VelocityX * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								
 							}
@@ -156,23 +207,43 @@ public class Ball extends GameObject
 								System.out.println(yDiffrence);
 								if (xDiffrence < yDiffrence)
 								{
-									VelocityX = VelocityX * -1;
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
-									VelocityY = VelocityY * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
 								}
 								else
 								{
-									VelocityY = VelocityY * -1;
-									VelocityX = VelocityX * -1;
+									if (doneY == false)
+									{
+										VelocityY = VelocityY * -1;
+										doneY = true;
+									}
+									if (doneX == false)
+									{
+										VelocityX = VelocityX * -1;
+										doneX = true;
+									}
 								}
 								
 							}
 							else
 							{
 								// vertical
-								VelocityY = VelocityY * -1;
+								if (doneY == false)
+								{
+									VelocityY = VelocityY * -1;
+									doneY = true;
+								}
 							}
 						}	
 						else
@@ -305,10 +376,11 @@ public class Ball extends GameObject
 		int yDiffrence;
 		double d;
 		boolean done = false;
+		//System.out.println("???????????????????????????????????????????????????????????????");
 		if (((locationX >= OtherObject.getLocationX()) && (locationX <= OtherObject.getLocationX() + 100)) || ((locationX + 25 >= OtherObject.getLocationX()) && (locationX + 25 <= OtherObject.getLocationX() + 100)))
 		{
 			//System.out.println("pos1");
-            if (((locationY >= OtherObject.getLocationY()) && (locationY <= OtherObject.getLocationY())) || ((locationY + 25 >= OtherObject.getLocationY()) && (locationY + 25 <= OtherObject.getLocationY())))
+            if (((locationY + 25 >= OtherObject.getLocationY()) && (locationY <= OtherObject.getLocationY())) || ((locationY + 25 >= OtherObject.getLocationY()) && (locationY + 25 <= OtherObject.getLocationY())))
 			{
 				//System.out.println("pos2");
 				if (((OtherObject.getLocationX() >= locationX) && (OtherObject.getLocationX() <= locationX + 25)) || ((OtherObject.getLocationX() + 100 >= locationX) && (OtherObject.getLocationX() <= locationX + 25))) 
@@ -316,6 +388,7 @@ public class Ball extends GameObject
 					//System.out.println("pos3");
 					if (((OtherObject.getLocationY() >= locationY) && (OtherObject.getLocationY() <= locationY + 25)) || ((OtherObject.getLocationY() >= locationY) && (OtherObject.getLocationY()<= locationY + 25)))
 					{
+						//System.out.println("???????????????????????????????????????????????????????????????");
 						done = true;
 						//	System.out.println("pos4");
 						/*
@@ -392,53 +465,60 @@ public class Ball extends GameObject
 							System.out.println("xy");
 						}
 						*/
-						
-						VelocityY = VelocityY * -1;
-						/*
-						if (locationX - 38 <= OtherObject.getLocationX())
+						if (locationY + (VelocityY * -1) + 25 <= OtherObject.getLocationY())
 						{
-							VelocityX = VelocityX + (int)((locationX - 50) / 10);
-						}
-						else
-						{
-							VelocityX = VelocityX + (int)((locationX - 50) / 10);
-						}
-						*/
-						VelocityX = VelocityX + ((locationX - 40 - OtherObject.getLocationX()) / 10);
-						d = Math.sqrt(Math.pow(VelocityX,2) + Math.pow(VelocityY,2));
-						VelocityX = (speed * (VelocityX / d));
-						/*
-						if ((speed * (VelocityX / d)) < 2)
-						{
-							if (VelocityX < 0)
-							{
-								VelocityX = -2;
-							}
-							else
-							{
-								VelocityX = 2;
-							}
-						}
-						else
-						{
-							VelocityX = (speed * (VelocityX / d));
-						}
-						
-						*/
-						if ((speed * (VelocityY / d)) < 2)
-						{
-							if (VelocityY < 0)
-							{
-								VelocityY = -2;
-							}
-							else
-							{
-								VelocityY = 2;
-							}
-						}
-						else
-						{
-							VelocityY = (speed * (VelocityY / d));
+								
+							//if (doneY == false)
+							//{
+								VelocityY = VelocityY * -1;
+								doneY = true;
+								/*
+								if (locationX - 38 <= OtherObject.getLocationX())
+								{
+									VelocityX = VelocityX + (int)((locationX - 50) / 10);
+								}
+								else
+								{
+									VelocityX = VelocityX + (int)((locationX - 50) / 10);
+								}
+								*/
+								VelocityX = VelocityX + ((locationX - 40 - OtherObject.getLocationX()) / 10);
+								d = Math.sqrt(Math.pow(VelocityX,2) + Math.pow(VelocityY,2));
+								VelocityX = (speed * (VelocityX / d));
+								/*
+								if ((speed * (VelocityX / d)) < 2)
+								{
+									if (VelocityX < 0)
+									{
+										VelocityX = -2;
+									}
+									else
+									{
+										VelocityX = 2;
+									}
+								}
+								else
+								{
+									VelocityX = (speed * (VelocityX / d));
+								}
+								
+								*/
+								if ((speed * (VelocityY / d)) < 2)
+								{
+									if (VelocityY < 0)
+									{
+										VelocityY = -2;
+									}
+									else
+									{
+										VelocityY = 2;
+									}
+								}
+								else
+								{
+									VelocityY = (speed * (VelocityY / d));
+								}
+							//}
 						}
 						
 						//VelocityY = (speed * (VelocityY / d));
@@ -504,73 +584,138 @@ public class Ball extends GameObject
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 								else
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 							}
@@ -586,73 +731,138 @@ public class Ball extends GameObject
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 								else
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 								
@@ -680,73 +890,139 @@ public class Ball extends GameObject
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 								}
 								else if (xDiffrence > yDiffrence)
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 								else
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+									
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 								}
 								
@@ -765,19 +1041,35 @@ public class Ball extends GameObject
 								{
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 									
 								}
@@ -785,54 +1077,102 @@ public class Ball extends GameObject
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 								}
 								else
 								{
 									if (isPositive(VelocityY))
 									{
-										VelocityY = yTempDiffrence * -1;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence * -1;
+											doneY = true;
+										}
 									}
 									else
 									{
-										VelocityY = yTempDiffrence;
+										if (doneY == false)
+										{
+											VelocityY = yTempDiffrence;
+											doneY = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityY()))
 									{
-										OtherObject.setVelocityY(yTempDiffrence * -1);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence * -1);
+											OtherObject.setDoneY(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityY(yTempDiffrence);
+										if (OtherObject.getDoneY() == false)
+										{
+											OtherObject.setVelocityY(yTempDiffrence);
+											OtherObject.setDoneY(true);
+										}
 									}
 									if (isPositive(VelocityX))
 									{
-										VelocityX = xTempDiffrence * -1;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence * -1;
+											doneX = true;
+										}
 									}
 									else
 									{
-										VelocityX = xTempDiffrence;
+										if (doneX == false)
+										{
+											VelocityX = xTempDiffrence;
+											doneX = true;
+										}
 									}
 									if (isPositive(OtherObject.getVelocityX()))
 									{
-										OtherObject.setVelocityX(xTempDiffrence * -1);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence * -1);
+											OtherObject.setDoneX(true);
+										}
 									}
 									else
 									{
-										OtherObject.setVelocityX(xTempDiffrence);
+										if (OtherObject.getDoneX() == false)
+										{
+											OtherObject.setVelocityX(xTempDiffrence);
+											OtherObject.setDoneX(true);
+										}
 									}
 								}
 								
@@ -840,7 +1180,11 @@ public class Ball extends GameObject
 							else
 							{
 								// vertical
-								VelocityY = VelocityY * -1;
+								if (doneY == false)
+								{
+									VelocityY = VelocityY * -1;
+									doneY = true;
+								}
 							}
 						}	
 						else
@@ -1005,7 +1349,8 @@ public class Ball extends GameObject
 				if (locationY >= pos)
 				{
 					//System.out.println("duhfuq3");
-					VelocityY = Math.abs(VelocityY) * -1;
+					//VelocityY = Math.abs(VelocityY) * -1;
+					return false;
 				}
 			}
 			else
@@ -1044,6 +1389,23 @@ public class Ball extends GameObject
 	{
 		speed = mySpeed;
 	}
+	public boolean getDoneX()
+	{
+		return doneX;
+	}
+	public boolean getDoneY()
+	{
+		return doneY;
+	}
+	public void setDoneX(boolean myDone)
+	{
+		doneX = myDone;
+	}
+	public void setDoneY(boolean myDone)
+	{
+		doneY = myDone;
+	}
+	
 }
 
 /**
