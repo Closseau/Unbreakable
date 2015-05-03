@@ -138,34 +138,34 @@ public class ImageCollector extends Component
 		
 		i = 50;
 		j = 0;
-		//for (i = 50; i <= 450; i = i + 60)
-	//	{
+		for (i = 50; i <= 450; i = i + 60)
+		{
 			for (j = 25; j <= 1300; j = j + 85)
 			{
 				Bricks.add(new Block(j, i, 3));
 			}
-	//	}
-		/*
+		}
+		
 			StartBall = new AnimeBall(700, 650, 2, -3, 4, 1);
 			StartBar = new Bar(660, 840, 5, 0);
-		*/
+		
 		i = 0;
 		j = 0;
-		for (j = 0; j <= 5; j++)
-		{
-			for (i = 0; i <= 6; i++)
-			{
-				Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
+		//for (j = 0; j <= 5; j++)
+		//{
+		//	for (i = 0; i <= 6; i++)
+		//	{
+				//Balls.add(new AnimeBall(i * 200, j * 100, 2, -3, 4, j % 2));
 				//Balls.add(new AnimeBall(i * 200, j * 100, 4, j % 2));
-			}
-		}
+		//	}
+		//}
 		//Balls.add(new AnimeBall(200, 100, 2, -3, 4, j % 2));
 		i = 0;
 		j = 0;
-		for (i = 0; i <= 13; i++)
-		{
-			Bars.add(new Bar(i * 100, 840, 5, 0));
-		}
+		//for (i = 0; i <= 13; i++)
+		//{
+		//	Bars.add(new Bar(i * 100, 840, 5, 0));
+		//}
 	//Bars.add(new Bar(330, 840, 5, 0));
 	//Bars.add(new Bar(990, 840, 5, 0));
 	//	Bricks.add(new Block(675, 50, 3));
